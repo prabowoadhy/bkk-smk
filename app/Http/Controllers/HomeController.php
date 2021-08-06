@@ -20,4 +20,25 @@ class HomeController extends Controller
         ];
         return view('homepage/lowongan', ['data' => $data]);
     }
+
+    public function perusahaan(Request $request) {
+        $data = [
+            'title' => 'Perusahaan'
+        ];
+        return view('homepage/perusahaan', ['data' => $data]);
+    }
+
+    public function detailperusahaan(Request $request) {
+        $data = [
+            'title' => 'dPerusahaan'
+        ];
+        return view('homepage/detailperusahaan', ['data' => $data]);
+    }
+
+    public function prakerin(Request $request) {
+        $data = [
+            'title' => 'Prakerin'
+        ];
+        return view('homepage/prakerin', ['data' => $data]);
+    }
 }

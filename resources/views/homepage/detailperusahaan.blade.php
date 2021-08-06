@@ -6,19 +6,20 @@
 <section class="page-section fitur mt-4" id="fitur">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 p-2">
+            <div class="col-md-3">
                 <div class="card">
+                    <img src="assets/img/caption-thumb.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h6>Pencarian</h6>
-                        <input class="form-control" type="text" name="pencarian" id="pencarian" placeholder="kata kunci">
-                        <input class="form-control" type="text" name="pencarian2" id="pencarian2" placeholder="kata kunci">
-                        <input class="form-control select2-form" name="jurusan" id="jurusan" >
-                        
+                      <h5 class="card-title"><a href="perusahaan/detail">Nama Perusahaan 3</a></h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      
                     </div>
-                </div>
+                  </div>
             </div>
-            <div class="col-md-9 p-2">
-                <div class="alert alert-secondary" role="alert">Menampilkan Semua Lowongan Kerja</div>
+            <div class="col-md-9">
+                <div class="card mb-2">
+                    <div class="card-body">Lowongan</div>
+                </div>
                 {{-- list job --}}
                 <div class="card" style="max-width: 100%;">
                     <div class="row no-gutters">
