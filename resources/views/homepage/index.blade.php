@@ -4,10 +4,10 @@
     
 <!-- Masthead-->
 <header class="masthead head-main text-white text-center">
-    {{-- <img src="assets/img/smkn-5-surabaya1556287713.jpg" alt=""> --}}
+    {{-- <img src="{{ asset('') }}assets/img/smkn-5-surabaya1556287713.jpg" alt=""> --}}
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+        <img class="masthead-avatar mb-5" src="{{ asset('') }}assets/img/avataaars.svg" alt="..." />
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">Bursa Kerja Khusus</h1>
         <!-- Icon Divider-->
@@ -34,25 +34,25 @@
         <div class="row justify-content-center">
             <div class="col-md-3">
                 <figure class="figure">
-                    <img src="assets/img/portfolio/cabin.png" class="figure-img img-fluid rounded" alt="...">
+                    <img src="{{ asset('') }}assets/img/portfolio/cabin.png" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption text-center">Lamaran Online</figcaption>
                   </figure>
             </div>
             <div class="col-md-3">
                 <figure class="figure">
-                    <img src="assets/img/portfolio/circus.png" class="figure-img img-fluid rounded" alt="...">
+                    <img src="{{ asset('') }}assets/img/portfolio/circus.png" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption text-center">Pantau Lamaran</figcaption>
                   </figure>
             </div>
             <div class="col-md-3">
                 <figure class="figure">
-                    <img src="assets/img/portfolio/game.png" class="figure-img img-fluid rounded" alt="...">
+                    <img src="{{ asset('') }}assets/img/portfolio/game.png" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption text-center">Tracer Study</figcaption>
                   </figure>
             </div>
             <div class="col-md-3">
                 <figure class="figure">
-                    <img src="assets/img/portfolio/safe.png" class="figure-img img-fluid rounded" alt="...">
+                    <img src="{{ asset('') }}assets/img/portfolio/safe.png" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption text-center">Perusahaan</figcaption>
                   </figure>
             </div>
@@ -75,7 +75,7 @@
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ms-auto"><img src="assets/img/caption-thumb.png" alt="" class="img-fluid"></div>
+            <div class="col-lg-4 ms-auto"><img src="{{ asset('') }}assets/img/caption-thumb.png" alt="" class="img-fluid"></div>
             <div class="col-lg-4 me-auto">
                 <p class="lead">Integrasi, sinergi dan kolaborasi untuk bantu temukan karir anak negeri. Bersama untuk membantu menemukan lowongan yang sesuai bagi berkembangnya karir masa depan anak bangsa.</p>
                 <a class="btn btn-xl btn-outline-light" href="#">
@@ -84,13 +84,6 @@
                 </a>
             </div>
         </div>
-        <!-- About Section Button-->
-        {{-- <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="#">
-                <i class="fas fa-sign-in me-2"></i>
-                Mulai !
-            </a>
-        </div> --}}
     </div>
 </section>
 @endsection

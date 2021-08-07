@@ -7,10 +7,10 @@
     <!-- SIDEBAR USER TITLE -->
     <div class="profile-usertitle">
         <div class="profile-usertitle-name">
-            Nama Siswa
+            Nama Perusahaan
         </div>
         <div class="profile-usertitle-job">
-            Jurusan
+            Bidang 
         </div>
     </div>
     <!-- END SIDEBAR USER TITLE -->
@@ -19,13 +19,13 @@
     <div class="profile-usermenu">
         <ul class="nav flex-column nav-pills">
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'siswa-loker') ? 'active' : '' }}" href="/siswa-loker"><i class="fas fa-briefcase"></i> Lamaran Pekerjaan</a>
+              <a class="nav-link {{ ($data['url'] === 'perusahaan-loker') ? 'active' : '' }}" href="/perusahaan-loker"><i class="fas fa-briefcase"></i> Lamaran Pekerjaan</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'siswa-prakerin') ? 'active' : '' }}" href="/siswa-prakerin"><i class="fas fa-school"></i> Lamaran Prakerin</a>
+              <a class="nav-link {{ ($data['url'] === 'perusahaan-prakerin') ? 'active' : '' }}" href="/perusahaan-prakerin"><i class="fas fa-school"></i> Lamaran Prakerin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'siswa-profil') ? 'active' : '' }}" href="/siswa-profil"><i class="fas fa-users"></i> Profil Siswa</a>
+              <a class="nav-link {{ ($data['url'] === 'perusahaan-profil') ? 'active' : '' }}" href="/perusahaan-profil"><i class="fas fa-users"></i> Profil Perusahaan</a>
             </li>
           </ul>
     </div>

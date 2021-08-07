@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                @include('layouts.sidebars')
+                @include('layouts.sidebars-perusahaan')
             </div>
             <div class="col-md-9">
                 <div class="alert alert-secondary" role="alert">Profil Siswa</div>

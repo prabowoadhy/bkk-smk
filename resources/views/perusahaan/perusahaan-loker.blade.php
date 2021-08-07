@@ -1,16 +1,19 @@
 @extends('layouts.main')
+
 @section('styles')
 <link href="{{ asset('') }}css/sidebars.css" rel="stylesheet">
 @endsection
+
 @section('content')
+
 <section class="page-section mt-4">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                @include('layouts.sidebars')
+                @include('layouts.sidebars-perusahaan')
             </div>
         <div class="col-md-9">
-            <div class="alert alert-secondary" role="alert">Menampilkan Semua Lamaran Prakerin yang telah diajukan.</div>
+            <div class="alert alert-secondary" role="alert">Menampilkan Semua Lamaran Kerja yang telah diajukan.</div>
                     {{-- list job --}}
                     <div class="card" style="max-width: 100%;">
                         <div class="row no-gutters">
@@ -28,7 +31,7 @@
                             </div>
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
+                                <a href="/pelamar-loker" class="btn btn-danger">Pelamar >></a>
                             </span>
                             </div>
                         </div>
@@ -50,7 +53,7 @@
                             </div>
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
+                                <a href="#" class="btn btn-danger">Pelamar >></a>
                             </span>
                             </div>
                         </div>
@@ -60,4 +63,8 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+{{-- <script src="{{ asset('') }}js/sidebars.js"></script> --}}
 @endsection

@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                @include('layouts.sidebars')
+                @include('layouts.sidebars-perusahaan')
             </div>
         <div class="col-md-9">
             <div class="alert alert-secondary" role="alert">Menampilkan Semua Lamaran Prakerin yang telah diajukan.</div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
+                                <a href="#" class="btn btn-danger">Pelamar >></a>
                             </span>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
+                                <a href="#" class="btn btn-danger">Pelamar >></a>
                             </span>
                             </div>
                         </div>

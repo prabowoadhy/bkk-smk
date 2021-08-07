@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="assets/img/caption-thumb.png" class="card-img-top" alt="...">
+                    <img src="{{ asset('') }}assets/img/caption-thumb.png" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><a href="perusahaan/detail">Nama Perusahaan 3</a></h5>
                       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>

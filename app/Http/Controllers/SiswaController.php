@@ -38,4 +38,20 @@ class SiswaController extends Controller
         return view('siswa/siswa-prakerin', ['data' => $data]);
     }
 
+    public function siswaregistrasi(Request $request) {
+        $data = [
+            'title' => 'Registrasi Siswa',
+            'url' => 'siswa-registrasi'
+        ];
+        return view('auth/siswa-registrasi', ['data' => $data]);
+    }
+
+    public function siswalogin(Request $request) {
+        $data = [
+            'title' => 'Login Siswa',
+            'url' => 'siswa-login'
+        ];
+        return view('auth/siswa-login', ['data' => $data]);
+    }
+
 }

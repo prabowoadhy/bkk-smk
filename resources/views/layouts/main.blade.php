@@ -7,15 +7,15 @@
         <meta name="author" content="" />
         <title>{{ $data['title'] }}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('') }}assets/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/home.css" rel="stylesheet" />
+        <link href="{{ asset('') }}assets/css/styles.css" rel="stylesheet" />
+        <link href="{{ asset('') }}assets/css/home.css" rel="stylesheet" />
         @yield('styles')
     </head>
     <body id="page-top">
@@ -34,8 +34,8 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($data['title'] === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
                     </ul>
                     <span class=" pull-right text-right">
-                        <a href="/siswa-profil" class="btn btn-success">Login Siswa</a>
-                        <a href="/perusahaan-profil" class="btn btn-primary">Perusahaan</a>
+                        <a href="/siswa-login" class="btn btn-success">Login Siswa</a>
+                        <a href="/perusahaan-login" class="btn btn-primary">Perusahaan</a>
                       </span>
                 </div>
             </div>
@@ -82,7 +82,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="{{ asset('') }}assets/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
