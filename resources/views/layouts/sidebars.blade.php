@@ -1,16 +1,18 @@
 <div class="profile-sidebar">
     <!-- SIDEBAR USERPIC -->
     <div class="profile-userpic d-flex align-items-center flex-column">
-        <img src="{{ asset('') }}assets/img/avataaars.svg" class="img-responsive mx-auto rounded" alt="">
+        <img src="{{ asset('assets/img/avataaars.svg') }}" class="img-responsive mx-auto rounded" alt="">
     </div>
     <!-- END SIDEBAR USERPIC -->
     <!-- SIDEBAR USER TITLE -->
     <div class="profile-usertitle">
         <div class="profile-usertitle-name">
-            Nama Siswa
-        </div>
-        <div class="profile-usertitle-job">
-            Jurusan
+          {{ $data['user']['name'] }}
+            
+          </div>
+          <div class="profile-usertitle-job">
+            Jurusan :
+            {{ $data['user']['level'] }}
         </div>
     </div>
     <!-- END SIDEBAR USER TITLE -->
@@ -26,6 +28,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link {{ ($data['url'] === 'siswa-profil') ? 'active' : '' }}" href="/siswa-profil"><i class="fas fa-users"></i> Profil Siswa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/siswa/logout"><i class="fas fa-sign-out"></i> Logout</a>
             </li>
           </ul>
     </div>

@@ -3,21 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class SiswaController extends Controller
 {
+    
+    // protected $siswa;
+    public function userlog(){
+        if (Auth::guard('alumni')->user()) {
+            $siswa = Auth::guard('alumni')->user();
+        } elseif (Auth::guard('siswa')->user()) {
+            $siswa = Auth::guard('siswa')->user();
+        }
+        return $siswa;
+    }
+
     public function index(Request $request) {
         $data = [
             'title' => 'Dashboard Siswa',
-            'url' => 'siswa-profil'
+            'url' => 'siswa-profil',
+            'user' => $this->userlog(),
         ];
         return view('siswa/siswa-profil', ['data' => $data]);
     }
 
     public function siswaprofil(Request $request) {
+
+        
+        $siswa = $this->userlog();
         $data = [
             'title' => 'Lamaran Pekerjaan Siswa',
-            'url' => 'siswa-profil'
+            'url' => 'siswa-profil',
+            'user' => $this->userlog(),
         ];
         return view('siswa/siswa-profil', ['data' => $data]);
     }
@@ -25,7 +42,8 @@ class SiswaController extends Controller
     public function siswaloker(Request $request) {
         $data = [
             'title' => 'Lamaran Pekerjaan Siswa',
-            'url' => 'siswa-loker'
+            'url' => 'siswa-loker',
+            'user' => $this->userlog(),
         ];
         return view('siswa/siswa-loker', ['data' => $data]);
     }
@@ -33,7 +51,8 @@ class SiswaController extends Controller
     public function siswaprakerin(Request $request) {
         $data = [
             'title' => 'Lamaran Prakerin Siswa',
-            'url' => 'siswa-prakerin'
+            'url' => 'siswa-prakerin',
+            'user' => $this->userlog(),
         ];
         return view('siswa/siswa-prakerin', ['data' => $data]);
     }

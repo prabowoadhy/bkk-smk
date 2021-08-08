@@ -46,6 +46,21 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswas',
+        ],
+
+        'alumni' => [
+            'driver' => 'session',
+            'provider' => 'alumnis',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -71,10 +86,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'siswas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Siswa::class,
+        ],
+
+        'alumnis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Alumni::class,
+        ],
     ],
 
     /*
@@ -98,6 +118,16 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'siswas' => [
+            'provider' => 'siswas',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'alumnis' => [
+            'provider' => 'alumnis',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

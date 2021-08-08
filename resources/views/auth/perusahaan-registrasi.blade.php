@@ -6,7 +6,7 @@
         <div class="row py-5 mt-0 align-items-center">
             <!-- For Demo Purpose -->
             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-                <img src="{{ asset('') }}assets/img/caption-thumb.png" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <img src="{{ asset('assets/img/caption-thumb.png') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
                 <h1>Create an Account</h1>
                 <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form elements.</p>
                 <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">

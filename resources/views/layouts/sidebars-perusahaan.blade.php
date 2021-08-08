@@ -1,7 +1,7 @@
 <div class="profile-sidebar">
     <!-- SIDEBAR USERPIC -->
     <div class="profile-userpic d-flex align-items-center flex-column">
-        <img src="{{ asset('') }}assets/img/avataaars.svg" class="img-responsive mx-auto rounded" alt="">
+        <img src="{{ asset('assets/img/avataaars.svg') }}" class="img-responsive mx-auto rounded" alt="">
     </div>
     <!-- END SIDEBAR USERPIC -->
     <!-- SIDEBAR USER TITLE -->

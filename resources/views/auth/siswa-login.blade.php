@@ -6,7 +6,7 @@
         <div class="row py-5 mt-0 align-items-top">
             <!-- For Demo Purpose -->
             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-                <img src="{{ asset('') }}assets/img/caption-thumb.png" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <img src="{{ asset('assets/img/caption-thumb.png') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
                 <h1>Create an Account</h1>
                 <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form elements.</p>
                 <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">
@@ -17,7 +17,8 @@
             <!-- Registeration Form -->
             <div class="col-md-7 col-lg-6 ml-auto">
                 <h4 class="text-primary mb-4">Login Siswa / Alumni</h4>
-                <form action="#">
+                <form action="{{ route('postlogin') }}" method="post">
+                    @csrf
                     <div class="row">
                         <!-- Email Address -->
                         <div class="input-group col-lg-12 mb-4">
@@ -26,7 +27,12 @@
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="email" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                            <input id="email" type="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                            @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                         <!-- Password -->
                         <div class="input-group col-lg-12 mb-4">
@@ -39,9 +45,9 @@
                         </div>
                         <!-- Submit Button -->
                         <div class="form-group col-lg-12 mx-auto mb-0">
-                            <a href="/siswa-profil" class="btn btn-primary btn-block py-2">
+                            <button type="submit" class="btn btn-primary btn-block py-2">
                                 <span class="font-weight-bold">Login</span>
-                            </a>
+                            </button>
                         </div>
 
                         <!-- Divider Text -->

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('styles')
-<link href="{{ asset('') }}css/sidebars.css" rel="stylesheet">
+<link href="{{ asset('assets/css/sidebars.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <section class="page-section mt-4">
@@ -19,5 +19,5 @@
 </section>
 @endsection
 @section('scripts')
-{{-- <script src="{{ asset('') }}js/sidebars.js"></script> --}}
+{{-- <script src="{{ asset('assets/js/sidebars.js') }}"></script> --}}
 @endsection

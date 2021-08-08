@@ -6,7 +6,7 @@
 @section('content')
 <h1 class="mt-4">{{ $data['title'] }}</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ $data['url'] }}</li>
+    {{ Breadcrumbs::render('admin.loker') }}
 </ol>
 <div class="row">
     <div class="card mb-4">
