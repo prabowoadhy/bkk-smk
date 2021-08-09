@@ -18,6 +18,3 @@
     </div>
 </section>
 @endsection
-@section('scripts')
-{{-- <script src="{{ asset('assets/js/sidebars.js') }}"></script> --}}
-@endsection

@@ -16,9 +16,9 @@ class CreateSiswasTable extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nis')->unique();
-            $table->string('name');
+            $table->string('nama');
             $table->string('tempat_lahir')->nullable();
-            $table->string('tgl_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
             $table->string('alamat')->nullable();
             $table->string('sekolah_asal')->nullable();
             $table->string('email')->unique();

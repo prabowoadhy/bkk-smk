@@ -17,7 +17,7 @@ class AlumniSeeder extends Seeder
     {
         Alumni::truncate();
         Alumni::create([
-            'name' => 'Alumni 1',
+            'nama' => 'Alumni 1',
             'nik' => '11222111',
             'level' => 'alumni',
             'email' => 'alumni@mail.com',

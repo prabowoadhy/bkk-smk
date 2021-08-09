@@ -34,8 +34,16 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($data['title'] === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
                     </ul>
                     <span class=" pull-right text-right">
-                        <a href="/siswa-loker" class="btn btn-success">Login Siswa</a>
-                        <a href="/perusahaan-login" class="btn btn-primary">Perusahaan</a>
+                        @auth('siswa')
+                            <a href="siswa/logout" class="btn btn-success">Logout</a>
+                        @endauth
+                        @auth('alumni')
+                            <a href="siswa/logout" class="btn btn-success">Logout</a>
+                        @endauth
+                        @guest
+                            <a href="/siswa-loker" class="btn btn-success">Login Siswa</a>
+                            <a href="/perusahaan-login" class="btn btn-primary">Perusahaan</a>
+                        @endguest
                       </span>
                 </div>
             </div>

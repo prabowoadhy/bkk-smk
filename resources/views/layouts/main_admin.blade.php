@@ -70,14 +70,30 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        {{ Auth::guard('user')->user()->name }}
+                        {{ Auth::guard('user')->user()->name ?? 'tidak ada Akses' }}
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
+                        <h1 class="mt-4">
+                            {{ $title ?? '' }}
+                        </h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">
+                                {{ $url ?? '' }}
+                            </li>
+                        </ol>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    {{ $title ?? '' }}
+                                </div>
+                                <div class="card-body">
                         @yield('content')
+                        </div>
+                    </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

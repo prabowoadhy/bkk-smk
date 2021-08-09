@@ -17,7 +17,7 @@ class SiswaSeeder extends Seeder
     {
         Siswa::truncate();
         Siswa::create([
-            'name' => 'Siswa 1',
+            'nama' => 'Siswa 1',
             'nis' => '11222111',
             'level' => 'siswa',
             'email' => 'siswa@mail.com',

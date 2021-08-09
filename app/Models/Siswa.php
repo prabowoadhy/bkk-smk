@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 
 class Siswa extends Authenticatable
@@ -27,4 +28,23 @@ class Siswa extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function allData() {
+        return DB::table('siswa')->get();
+    }
+
+    public function detailData($id) {
+        return DB::table('siswa')->where('id', $id)->first();
+    }
+
+    public function insert($data)
+    {
+        DB::table('siswa')->insert($data);
+    }
+
+    public function updatesiswa($id, $data)
+    {
+        DB::table('siswa')->where('id', $id)->update($data);
+    }
+
 }
