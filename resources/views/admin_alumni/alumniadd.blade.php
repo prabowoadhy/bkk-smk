@@ -5,12 +5,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-8">
-        <form action="/admin/siswa/actionadd" method="post" enctype="multipart/form-data">
+        <form action="/admin/alumni/addaction" method="post" enctype="multipart/form-data">
             @csrf
             <input class="form-control" name="id" id="id" type="hidden" placeholder="">
             <div class="form-floating mb-3">
-                <input class="form-control" name="nis" id="nis" type="text" placeholder="" value="{{ old('nis') }}">
-                <label for="nis">NIS</label>
+                <input class="form-control" name="nik" id="nik" type="text" placeholder="" value="{{ old('nik') }}">
+                <label for="nis">NIK</label>
             </div>
             <div class="form-floating mb-3">
                 <input class="form-control" name="nama" id="nama" type="text" placeholder="" value="{{ old('nama') }}">
@@ -37,7 +37,7 @@
                 <label for="password">password</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" name="foto" id="foto" type="file" value="{{ old('foto') }}">
+                <input class="form-control" name="foto" id="foto" type="file" placeholder="">
                 <label for="foto">foto</label>
             </div>
             <button type="submit">Tambah</button>

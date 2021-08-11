@@ -9,6 +9,11 @@
         <title>Dashboard Admin BKK SMK</title>
         <link href="{{ asset('assets/css/sbadmin-styles.css') }}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+            textarea {
+                height: 100px !important; 
+            }
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -85,15 +90,22 @@
                                 {{ $url ?? '' }}
                             </li>
                         </ol>
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    {{ $title ?? '' }}
-                                </div>
-                                <div class="card-body">
-                        @yield('content')
+                        @if (session('message'))
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="fas fa-check"></i>
+                            <div>{{ ' '.session('message') }}</div>
+                          </div>
+                            
+                        @endif
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                {{ $title ?? '' }}
+                            </div>
+                            <div class="card-body">
+                                @yield('content')
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

@@ -13,8 +13,17 @@ class CreatePerusahaanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_perusahaan', function (Blueprint $table) {
+        Schema::create('perusahaan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_perusahaan');
+            $table->text('alamat')->nullable();
+            $table->string('bidang_jasa');
+            $table->text('deskripsi')->nullable();
+            $table->string('no_telp')->nullable();
+            $table->string('email')->unique();
+            $table->string('foto')->nullable();
+            $table->integer('user_id');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -26,6 +35,6 @@ class CreatePerusahaanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_perusahaan');
+        Schema::dropIfExists('perusahaan');
     }
 }

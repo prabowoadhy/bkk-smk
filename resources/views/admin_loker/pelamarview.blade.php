@@ -4,45 +4,39 @@
 @endsection
 
 @section('content')
-<span class="d-block">
-    <a class="btn btn-primary pull-right" href="/admin/alumni/addform">Tambah Data</a>
-</span>
 <table id="datatablesSimple">
     <thead>
         <tr>
             <th>No</th>
-            <th>NIK</th>
-            <th>Nama</th>
-            <th>Tempat tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>Email</th>
-            <th>Action</th>
+            <th>Nama Pelamar</th>
+            <th>Nama Perusahaan</th>
+            <th>Posisi Lowongan</th>
+            {{-- <th>Curriculum Vittae</th> --}}
+            <th>Hubungi</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
             <th>No</th>
-            <th>NIK</th>
-            <th>Nama</th>
-            <th>Tempat tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>Email</th>
-            <th>Action</th>
+            <th>Nama Pelamar</th>
+            <th>Nama Perusahaan</th>
+            <th>Posisi Lowongan</th>
+            {{-- <th>Curriculum Vittae</th> --}}
+            <th>Hubungi</th>
         </tr>
     </tfoot>
     <tbody>
         @php
             $no=1;
         @endphp
-        @foreach ($alumni as $item) 
+        @foreach ($lamaran as $item) 
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $item->nik }}</td>
                 <td>{{ $item->nama }}</td>
-                <td>{{ $item->tempat_lahir.' '.$item->tgl_lahir }}</td>
-                <td>{{ $item->alamat }}</td>
-                <td>{{ $item->email }}</td>
-                <td><a class="btn btn-sm btn-warning" href="/admin/alumni/editform/{{ $item->id }}">Edit</a><a class="btn btn-sm btn-danger" href="/admin/siswa/edit/{{ $item->id }}">Delete</a></td>
+                <td>{{ $item->nama_perusahaan }}</td>
+                <td>{{ $item->posisi }}</td>
+                {{-- <td><a class="btn btn-sm btn-primary" href="#">Lihat CV</a></td> --}}
+                <td><a class="btn btn-sm btn-success" href="/admin/loker/editform/#">{{ $item->no_telp }}</a><a class="btn btn-sm btn-danger" href="/admin/loker/pelamar/#">{{ $item->email }}</a></td>
             </tr>
 
         @endforeach

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>{{ $data['title'] }}</title>
+        <title>{{ $title }}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('assets/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -29,9 +29,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($data['title'] === 'Lowongan') ? 'active' : '' }}" href="/lowongan">Lowongan</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($data['title'] === 'Prakerin') ? 'active' : '' }}" href="/prakerin">Prakerin</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($data['title'] === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Lowongan') ? 'active' : '' }}" href="/lowongan">Lowongan</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Prakerin') ? 'active' : '' }}" href="/prakerin">Prakerin</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
                     </ul>
                     <span class=" pull-right text-right">
                         @auth('siswa')

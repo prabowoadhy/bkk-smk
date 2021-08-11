@@ -30,7 +30,7 @@ class Siswa extends Authenticatable
     ];
 
     public function allData() {
-        return DB::table('siswa')->get();
+        return DB::table('siswa')->orderBy('nama', 'asc')->get();
     }
 
     public function detailData($id) {

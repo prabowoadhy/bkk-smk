@@ -46,15 +46,28 @@ Route::get('/pelamar-loker', [PerusahaanController::class, 'pelamarloker']);
 Route::get('/admin-login', [AdminController::class, 'login']);
 Route::middleware(['auth:user'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/loker', [AdminLokerController::class, 'index'])->name('admin.loker');
     Route::get('/admin/prakerin', [AdminPrakerinController::class, 'index']);
-    Route::get('/admin/perusahaan', [AdminPerusahaanController::class, 'index']);
     Route::get('/admin/siswa', [AdminSiswaController::class, 'index']);
     Route::get('/admin/siswa/add', [AdminSiswaController::class, 'addsiswa']);
     Route::post('/admin/siswa/actionadd', [AdminSiswaController::class, 'insert']);
     Route::get('/admin/siswa/edit/{id_siswa}', [AdminSiswaController::class, 'editSiswa']);
     Route::post('/admin/siswa/actionupdate/{id_siswa}', [AdminSiswaController::class, 'actionUpdate']);
     Route::get('/admin/alumni', [AdminAlumniController::class, 'index']);
+    Route::get('/admin/alumni/addform', [AdminAlumniController::class, 'addform']);
+    Route::post('/admin/alumni/addaction', [AdminAlumniController::class, 'addaction']);
+    Route::get('/admin/alumni/editform/{id}', [AdminAlumniController::class, 'editform']);
+    Route::post('/admin/alumni/editaction/{id}', [AdminAlumniController::class, 'editaction']);
+    Route::get('/admin/perusahaan', [AdminPerusahaanController::class, 'index']);
+    Route::get('/admin/perusahaan/addform', [AdminPerusahaanController::class, 'addform']);
+    Route::post('/admin/perusahaan/addaction', [AdminPerusahaanController::class, 'addaction']);
+    Route::get('/admin/perusahaan/editform/{id}', [AdminPerusahaanController::class, 'editform']);
+    Route::post('/admin/perusahaan/editaction/{id}', [AdminPerusahaanController::class, 'editaction']);
+    Route::get('/admin/loker', [AdminLokerController::class, 'index'])->name('admin.loker');
+    Route::get('/admin/loker/addform', [AdminLokerController::class, 'addform']);
+    Route::post('/admin/loker/addaction', [AdminLokerController::class, 'addaction']);
+    Route::get('/admin/loker/editform/{id}', [AdminLokerController::class, 'editform']);
+    Route::post('/admin/loker/editaction/{id}', [AdminLokerController::class, 'editaction']);
+    Route::get('/admin/loker/pelamar/{id}', [AdminLokerController::class, 'pelamarloker']);
 });
 
 Route::group(['middleware' => ['auth:siswa,alumni']], function() {

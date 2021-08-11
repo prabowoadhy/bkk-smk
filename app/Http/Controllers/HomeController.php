@@ -3,57 +3,54 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\LokerModel;
+use App\Models\PerusahaanModel;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->LokerModel = new LokerModel();
+        $this->PerusahaanModel = new PerusahaanModel();
+        
+    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $data = [
-            'title' => 'Home'
+            'title' => 'Home',
         ];
-        return view('homepage/index', ['data' => $data]);
+        return view('homepage/index', $data);
     }
 
     public function lowongan(Request $request) {
         $data = [
-            'title' => 'Lowongan'
+            'title' => 'Lowongan',
+            'loker' => $this->LokerModel->allData(),
         ];
-        return view('homepage/lowongan', ['data' => $data]);
+        
+        return view('homepage/lowongan', $data);
     }
 
     public function perusahaan(Request $request) {
         $data = [
-            'title' => 'Perusahaan'
+            'title' => 'Perusahaan',
+            'perusahaan' => $this->PerusahaanModel->allData(),
         ];
-        return view('homepage/perusahaan', ['data' => $data]);
+        return view('homepage/perusahaan', $data);
     }
 
     public function detailperusahaan(Request $request) {
         $data = [
             'title' => 'dPerusahaan'
         ];
-        return view('homepage/detailperusahaan', ['data' => $data]);
+        return view('homepage/detailperusahaan', $data);
     }
 
     public function prakerin(Request $request) {
         $data = [
             'title' => 'Prakerin'
         ];
-        return view('homepage/prakerin', ['data' => $data]);
+        return view('homepage/prakerin', $data);
     }
 }

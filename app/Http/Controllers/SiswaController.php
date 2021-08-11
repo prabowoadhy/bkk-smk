@@ -24,7 +24,7 @@ class SiswaController extends Controller
             'url' => 'siswa-profil',
             'user' => $this->userlog(),
         ];
-        return view('siswa/siswa-profil', ['data' => $data]);
+        return view('siswa/siswa-profil', $data);
     }
 
     public function siswaprofil(Request $request) {
@@ -36,7 +36,7 @@ class SiswaController extends Controller
             'url' => 'siswa-profil',
             'user' => $this->userlog(),
         ];
-        return view('siswa/siswa-profil', ['data' => $data]);
+        return view('siswa/siswa-profil', $data);
     }
 
     public function siswaloker(Request $request) {
@@ -45,7 +45,7 @@ class SiswaController extends Controller
             'url' => 'siswa-loker',
             'user' => $this->userlog(),
         ];
-        return view('siswa/siswa-loker', ['data' => $data]);
+        return view('siswa/siswa-loker', $data);
     }
 
     public function siswaprakerin(Request $request) {
@@ -54,7 +54,7 @@ class SiswaController extends Controller
             'url' => 'siswa-prakerin',
             'user' => $this->userlog(),
         ];
-        return view('siswa/siswa-prakerin', ['data' => $data]);
+        return view('siswa/siswa-prakerin', $data);
     }
 
     public function siswaregistrasi(Request $request) {
@@ -62,7 +62,7 @@ class SiswaController extends Controller
             'title' => 'Registrasi Siswa',
             'url' => 'siswa-registrasi'
         ];
-        return view('auth/siswa-registrasi', ['data' => $data]);
+        return view('auth/siswa-registrasi', $data);
     }
 
     public function siswalogin(Request $request) {
@@ -70,7 +70,7 @@ class SiswaController extends Controller
             'title' => 'Login Siswa',
             'url' => 'siswa-login'
         ];
-        return view('auth/siswa-login', ['data' => $data]);
+        return view('auth/siswa-login', $data);
     }
 
 }

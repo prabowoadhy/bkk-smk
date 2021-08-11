@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
-use Ramsey\Uuid\Codec\TimestampLastCombCodec;
 
 class AdminSiswaController extends Controller
 {
@@ -57,7 +56,15 @@ class AdminSiswaController extends Controller
             'alamat' => 'required',
             'email' => 'required|unique:siswa,email|unique:alumni,email',
             'password' => 'required',
+            'foto' => 'mimes:jpg,jpeg,bmp,png|max:1024',
         ]);
+        if (isset(Request()->foto)) {
+            $file = Request()->foto;
+            $filename = 'siswa_'.Request()->nis.'.'.$file->extension();
+            $file->move(public_path('foto_uploaded'), $filename);    
+        } else {
+            $filename = '';
+        }
         $data = [
             'nis' => Request()->nis,
             'nama' => Request()->nama,
@@ -66,10 +73,10 @@ class AdminSiswaController extends Controller
             'alamat' => Request()->alamat,
             'email' => Request()->email,
             'password' => bcrypt(Request()->password),
-            // 'created_at' => timestamps,
+            'foto' => $filename,
         ];
         $this->SiswaModel->insert($data);
-        return redirect('/admin/siswa');
+        return redirect('/admin/siswa')->with('message', 'Data '.Request()->nama.' Berhasil Ditambahkan !');
     }
 
     public function actionUpdate($id_siswa)
@@ -82,16 +89,30 @@ class AdminSiswaController extends Controller
             'alamat' => 'required',
             'email' => 'required',
         ]);
-        $data = [
-            'nis' => Request()->nis,
-            'nama' => Request()->nama,
-            'tempat_lahir' => Request()->tempat_lahir,
-            'tgl_lahir' => Request()->tgl_lahir,
-            'alamat' => Request()->alamat,
-            'email' => Request()->email,
-            // 'created_at' => timestamps,
-        ];
+        if (isset(Request()->foto)) {
+            $file = Request()->foto;
+            $filename = 'siswa_'.Request()->nis.'.'.$file->extension();
+            $file->move(public_path('foto_uploaded'), $filename);    
+            $data = [
+                'nis' => Request()->nis,
+                'nama' => Request()->nama,
+                'tempat_lahir' => Request()->tempat_lahir,
+                'tgl_lahir' => Request()->tgl_lahir,
+                'alamat' => Request()->alamat,
+                'email' => Request()->email,
+                'foto' => $filename,
+            ];
+        } else {
+            $data = [
+                'nis' => Request()->nis,
+                'nama' => Request()->nama,
+                'tempat_lahir' => Request()->tempat_lahir,
+                'tgl_lahir' => Request()->tgl_lahir,
+                'alamat' => Request()->alamat,
+                'email' => Request()->email,
+            ];
+        }
         $this->SiswaModel->updatesiswa($id_siswa, $data);
-        return redirect('/admin/siswa');
+        return redirect('/admin/siswa')->with('message', 'Data '.Request()->nama.' Berhasil Diubah !');
     }
 }
