@@ -89,7 +89,7 @@ class AdminPerusahaanController extends Controller
         ]);
         if (isset(Request()->foto)) {
             $file = Request()->foto;
-            $filename = 'siswa_'.Request()->nik.'.'.$file->extension();
+            $filename = Str::of(Request()->nama_perusahaan)->slug('-').'.'.$file->extension();
             $file->move(public_path('foto_uploaded'), $filename);
             $data = [
                 'nama_perusahaan' => Request()->nama_perusahaan,
