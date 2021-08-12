@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LokerModel;
 use App\Models\PerusahaanModel;
+use App\Models\Prakerin;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -13,6 +15,18 @@ class HomeController extends Controller
         $this->LokerModel = new LokerModel();
         $this->PerusahaanModel = new PerusahaanModel();
         
+    }
+
+    public function userlog(){
+        $siswa = [
+            'id' => '0',
+        ];
+        if (Auth::guard('alumni')->user()) {
+            $siswa = Auth::guard('alumni')->user();
+        } elseif (Auth::guard('siswa')->user()) {
+            $siswa = Auth::guard('siswa')->user();
+        }
+        return $siswa;
     }
 
     public function index()
@@ -30,6 +44,16 @@ class HomeController extends Controller
         ];
         
         return view('homepage/lowongan', $data);
+    
+    }
+    public function lokerdetail($id) {
+        $data = [
+            'title' => 'Lowongan',
+            'loker' => $this->LokerModel->detailData($id),
+            'user' => $this->userlog(),
+        ];
+        
+        return view('homepage/siswa-loker-lamar', $data);
     }
 
     public function perusahaan(Request $request) {
@@ -47,9 +71,10 @@ class HomeController extends Controller
         return view('homepage/detailperusahaan', $data);
     }
 
-    public function prakerin(Request $request) {
+    public function prakerin() {
         $data = [
-            'title' => 'Prakerin'
+            'title' => 'Prakerin',
+            'prakerin' => Prakerin::latest()->filter(request(['search']))->get(),
         ];
         return view('homepage/prakerin', $data);
     }

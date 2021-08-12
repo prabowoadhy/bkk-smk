@@ -4,9 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        if (Auth::check()) {
+            return redirect('admin');
+        } else {
+            return redirect('admin-login');
+        }
+    }
+
     public function index(Request $request) {
         $data = [
             'title' => 'Dashboard Admin',

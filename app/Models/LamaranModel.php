@@ -19,6 +19,18 @@ class LamaranModel extends Model
         'status',
     ];
 
+    protected $guarded = [];
+    
+    public function loker()
+    {
+        return $this->belongsTo(LokerModel::class, 'id_loker');
+    }
+
+    public function alumni()
+    {
+        return $this->belongsTo(Alumni::class);
+    }
+
     public function allData() {
         $lamaran = DB::table('lamaran')
         ->join('loker', 'lamaran.id_loker', '=', 'loker.id')
@@ -35,6 +47,16 @@ class LamaranModel extends Model
         ->join('perusahaan', 'loker.perusahaan_id', '=', 'perusahaan.id')
         ->select('lamaran.*', 'perusahaan.nama_perusahaan', 'loker.posisi', 'alumni.nama', 'alumni.no_telp', 'alumni.email')
         ->where('loker.id', $id_loker)->get();
+        return $lamaran;
+    }
+
+    public function siswaloker($id_siswa) {
+        $lamaran = DB::table('lamaran')
+        ->join('loker', 'lamaran.id_loker', '=', 'loker.id')
+        ->join('alumni', 'lamaran.id_pelamar', '=', 'alumni.id')
+        ->join('perusahaan', 'loker.perusahaan_id', '=', 'perusahaan.id')
+        ->select('lamaran.*', 'perusahaan.nama_perusahaan', 'perusahaan.foto', 'loker.posisi', 'alumni.nama', 'alumni.no_telp', 'alumni.email')
+        ->where('lamaran.id_pelamar', $id_siswa)->get();
         return $lamaran;
     }
 

@@ -19,13 +19,13 @@
     <div class="profile-usermenu">
         <ul class="nav flex-column nav-pills">
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'perusahaan-loker') ? 'active' : '' }}" href="/perusahaan-loker"><i class="fas fa-briefcase"></i> Lamaran Pekerjaan</a>
+              <a class="nav-link {{ ($url === 'perusahaan-loker') ? 'active' : '' }}" href="/perusahaan-loker"><i class="fas fa-briefcase"></i> Lamaran Pekerjaan</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'perusahaan-prakerin') ? 'active' : '' }}" href="/perusahaan-prakerin"><i class="fas fa-school"></i> Lamaran Prakerin</a>
+              <a class="nav-link {{ ($url === 'perusahaan-prakerin') ? 'active' : '' }}" href="/perusahaan-prakerin"><i class="fas fa-school"></i> Lamaran Prakerin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ ($data['url'] === 'perusahaan-profil') ? 'active' : '' }}" href="/perusahaan-profil"><i class="fas fa-users"></i> Profil Perusahaan</a>
+              <a class="nav-link {{ ($url === 'perusahaan-profil') ? 'active' : '' }}" href="/perusahaan-profil"><i class="fas fa-users"></i> Profil Perusahaan</a>
             </li>
           </ul>
     </div>

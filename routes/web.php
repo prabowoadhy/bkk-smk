@@ -44,8 +44,8 @@ Route::get('/pelamar-loker', [PerusahaanController::class, 'pelamarloker']);
 
 
 Route::get('/admin-login', [AdminController::class, 'login']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::middleware(['auth:user'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/prakerin', [AdminPrakerinController::class, 'index']);
     Route::get('/admin/siswa', [AdminSiswaController::class, 'index']);
     Route::get('/admin/siswa/add', [AdminSiswaController::class, 'addsiswa']);
@@ -71,7 +71,11 @@ Route::middleware(['auth:user'])->group(function () {
 });
 
 Route::group(['middleware' => ['auth:siswa,alumni']], function() {
+    Route::get('/lowongan/detail/{id}', [HomeController::class, 'lokerdetail']);
+    Route::post('/siswalamaraction', [SiswaController::class, 'siswalamaraction']);
+    
     Route::get('/siswa-profil', [SiswaController::class, 'siswaprofil']);
+    Route::post('/siswa/actionupdate/{id_siswa}', [SiswaController::class, 'actionUpdate']);
     Route::get('/siswa-loker', [SiswaController::class, 'siswaloker']);
     Route::get('/siswa-prakerin', [SiswaController::class, 'siswaprakerin']);
 });

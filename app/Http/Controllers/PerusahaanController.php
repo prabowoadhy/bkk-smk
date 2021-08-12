@@ -12,7 +12,7 @@ class PerusahaanController extends Controller
             'title' => 'Dashboard Perusahaan',
             'url' => 'perusahaan-profil'
         ];
-        return view('perusahaan/perusahaan-profil', ['data' => $data]);
+        return view('perusahaan/perusahaan-profil', $data);
     }
 
     public function perusahaanprofil(Request $request) {
@@ -20,7 +20,7 @@ class PerusahaanController extends Controller
             'title' => 'Lamaran Pekerjaan Perusahaan',
             'url' => 'perusahaan-profil'
         ];
-        return view('perusahaan/perusahaan-profil', ['data' => $data]);
+        return view('perusahaan/perusahaan-profil', $data);
     }
 
     public function perusahaanloker(Request $request) {
@@ -28,7 +28,7 @@ class PerusahaanController extends Controller
             'title' => 'Lamaran Pekerjaan Perusahaan',
             'url' => 'perusahaan-loker'
         ];
-        return view('perusahaan/perusahaan-loker', ['data' => $data]);
+        return view('perusahaan/perusahaan-loker', $data);
     }
 
     public function perusahaanprakerin(Request $request) {
@@ -36,7 +36,7 @@ class PerusahaanController extends Controller
             'title' => 'Lamaran Prakerin Perusahaan',
             'url' => 'perusahaan-prakerin'
         ];
-        return view('perusahaan/perusahaan-prakerin', ['data' => $data]);
+        return view('perusahaan/perusahaan-prakerin', $data);
     }
 
     public function perusahaanregistrasi(Request $request) {
@@ -44,7 +44,7 @@ class PerusahaanController extends Controller
             'title' => 'Registrasi Perusahaan',
             'url' => 'perusahaan-registrasi'
         ];
-        return view('auth/perusahaan-registrasi', ['data' => $data]);
+        return view('auth/perusahaan-registrasi', $data);
     }
 
     public function perusahaanlogin(Request $request) {
@@ -52,7 +52,7 @@ class PerusahaanController extends Controller
             'title' => 'Login Perusahaan',
             'url' => 'perusahaan-login'
         ];
-        return view('auth/perusahaan-login', ['data' => $data]);
+        return view('auth/perusahaan-login', $data);
     }
 
     public function pelamarloker(Request $request) {
@@ -60,6 +60,6 @@ class PerusahaanController extends Controller
             'title' => 'Pelamar Loker',
             'url' => 'pelamar-loker'
         ];
-        return view('perusahaan/perusahaan-loker-pelamar', ['data' => $data]);
+        return view('perusahaan/perusahaan-loker-pelamar', $data);
     }
 }

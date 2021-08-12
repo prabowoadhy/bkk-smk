@@ -12,7 +12,14 @@
                   @foreach ($perusahaan as $item)
                   {{-- <div class="col-md-4 "> --}}
                     <div class="card col-md-4 p-1">
-                      <img src="{{ url('foto_uploaded/'.$item->foto) }}" class="card-img-top img-thumbnail" alt="...">
+                      @if (!$item->foto == '')
+                        <img src="{{ url('foto_uploaded/'.$item->foto) }}" class="card-img-top img-thumbnail" alt="...">
+                          
+                      @else
+                        <span class="card-img-top img-thumbnail" style="font-size: 3em; color: Tomato;">
+                          <i class="fas fa-briefcase fa-2x card-img-top img-thumbnail"></i>
+                        </span>
+                      @endif
                       <div class="card-body">
                         <h5 class="card-title"><a href="perusahaan/detail/{{ $item->slug }}">{{ $item->nama_perusahaan }}</a></h5>
                         <p class="card-text">{{ Str::of($item->deskripsi)->limit(100)}}</p>

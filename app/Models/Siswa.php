@@ -15,10 +15,20 @@ class Siswa extends Authenticatable
     protected $table = "siswa";
     protected $primaryKey = "id";
     protected $fillable = [
-        'name',
+        'id',
+        'nis',
+        'nama',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat',
+        'sekolah_asal',
+        'no_telp',
         'email',
         'password',
+        'foto',
     ];
+
+    protected $guarded = [];
 
     protected $hidden = [
         'password',

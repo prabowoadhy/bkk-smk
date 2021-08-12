@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LoginAuthController extends Controller
 {
     public function postLogin(Request $request) {
         if (Auth::guard('siswa')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/siswa-profil');
+            return redirect()->intended('/siswa-profil');
         } elseif (Auth::guard('alumni')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/siswa-profil');
+            return redirect()->intended('/siswa-profil');
         } 
         return redirect('/siswa-login');
         

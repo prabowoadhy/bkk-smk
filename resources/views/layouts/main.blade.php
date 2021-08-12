@@ -35,13 +35,13 @@
                     </ul>
                     <span class=" pull-right text-right">
                         @auth('siswa')
-                            <a href="siswa/logout" class="btn btn-success">Logout</a>
+                            <a href="{{ Route('logout') }}" class="btn btn-success">Logout</a>
                         @endauth
                         @auth('alumni')
-                            <a href="siswa/logout" class="btn btn-success">Logout</a>
+                            <a href="{{ Route('logout') }}" class="btn btn-success">Logout</a>
                         @endauth
                         @guest
-                            <a href="/siswa-loker" class="btn btn-success">Login Siswa</a>
+                            <a href="/siswa-loker" class="btn btn-success">Siswa</a>
                             <a href="/perusahaan-login" class="btn btn-primary">Perusahaan</a>
                         @endguest
                       </span>

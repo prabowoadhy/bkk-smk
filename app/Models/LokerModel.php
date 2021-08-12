@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -17,23 +18,33 @@ class LokerModel extends Model
         'posisi',
         'bidang',
         'tgl_mulai',
-        'gtl_selesai',
+        'tgl_selesai',
         'penempatan',
         'deskripsi',
         'perusahaan_id',
         'user_id',
     ];
 
+    protected $guarded = [];
+    
+    public function perusahaan()
+    {
+        return $this->belongsTo(PerusahaanModel::class);
+    }
+
     public function allData() {
         $loker = DB::table('loker')
             ->leftJoin('perusahaan', 'loker.perusahaan_id', '=', 'perusahaan.id')
-            ->select('loker.*', 'perusahaan.nama_perusahaan', 'perusahaan.email')
+            ->select('loker.*', 'perusahaan.nama_perusahaan', 'perusahaan.email', 'perusahaan.foto')
             ->get();
         return $loker;
     }
 
     public function detailData($id) {
-        return DB::table('loker')->where('id', $id)->first();
+        return DB::table('loker')
+        ->leftJoin('perusahaan', 'loker.perusahaan_id', '=', 'perusahaan.id')
+        ->select('loker.*', 'perusahaan.nama_perusahaan', 'perusahaan.email', 'perusahaan.foto')
+        ->where('loker.id', $id)->first();
     }
 
     public function insert($data)
