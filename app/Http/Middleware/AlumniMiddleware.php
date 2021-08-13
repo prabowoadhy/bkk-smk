@@ -9,7 +9,6 @@ class AlumniMiddleware extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            // return var_dump($request->expectsJson());
             return route('alumni-login');
         }
     }
