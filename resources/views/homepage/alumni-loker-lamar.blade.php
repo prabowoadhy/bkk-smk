@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row mt-2">
             {{-- <div class="col-md-12"> --}}
-                <h4 class="mt-2">{{ $prakerin->posisi }}</h4>
+                <h4 class="mt-2">{{ $loker->posisi }}</h4>
             {{-- </div> --}}
         </div>
         <div class="row mt-2">
@@ -20,26 +20,26 @@
                         <div class="card-header">
                             <div class="row p-1">
                                 <div class="col-md-3 pl-">
-                                    <a><i class="fas fa-clock"></i> {{ $prakerin->jenis_loker }}</a>
+                                    <a><i class="fas fa-clock"></i> {{ $loker->jenis_loker }}</a>
                                 </div>
                                 <div class="col-md-3 pl-">
-                                    <a><i class="fas fa-building"></i> {{ $prakerin->bidang }}</a>
+                                    <a><i class="fas fa-building"></i> {{ $loker->bidang }}</a>
                                 </div>
                                 <div class="col-md-2 pl-">
-                                    <a><i class="fas fa-map-marker-alt"></i> {{ $prakerin->penempatan }}</a>
+                                    <a><i class="fas fa-map-marker-alt"></i> {{ $loker->penempatan }}</a>
                                 </div>
                                 <div class="col-md-4 pl-">
-                                    <a><i class="fas fa-stopwatch"></i> Deadline : {{ $prakerin->tgl_selesai }}</a>
+                                    <a><i class="fas fa-stopwatch"></i> Deadline : {{ $loker->tgl_selesai }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>{{ $prakerin->deskripsi }}</p>
+                            <p>{{ $loker->deskripsi }}</p>
                         </div>
                     </div>
                     <div class="col-md-12 mt-4">
-                        <img class="img img-fluid" style="height: 50px" src="{{ asset('foto_uploaded/'.$prakerin->foto) }}" alt="">
-            {{ $prakerin->nama_perusahaan }}
+                        <img class="img img-fluid" style="height: 50px" src="{{ asset('foto_uploaded/'.$loker->foto) }}" alt="">
+            {{ $loker->nama_perusahaan }}
                     </div>
                     
                 </div>            
@@ -51,17 +51,17 @@
                         Lamar Sekarang
                     </div>
                     <div class="card-body">
-                        <form action="/siswalamaraction" method="post">
+                        <form action="/alumnilamaraction" method="post">
                             @csrf
-                        <input class="form-control" type="text" name="id_prakerin" id="id_prakerin" value="{{ $prakerin->id }}" hidden>
-                        <input class="form-control" type="text" name="id_pelamar" id="id_pelamar" value="{{ $user->id }}" hidden>
+                        <input class="form-control" type="text" name="id_loker" id="id_loker" value="{{ $loker->id }}" hidden>
+                        <input class="form-control" type="text" name="id_pelamar" id="id_pelamar" value="@isset($user->id){{ $user->id }}@endisset" hidden>
                         <label for="motivasi"> Motivasi</label>
                         <textarea class="form-control" type="text" name="catatan_pelamar" id="catatan_pelamar" style="height: 200px"></textarea>
                         <button class="btn btn-sm btn-primary" type="submit">Lamar Loker</button>
                         </form>
                     </div>
                     @else
-                    <a class="btn btn-danger" href="/prakerin/details/{{ $loker->id }}?login=true" class="btn btn-success">Silakan Login Untuk Melamar</a>
+                    <a class="btn btn-danger" href="/lowongan/details/{{ $loker->id }}?login=true" class="btn btn-success">Silakan Login Untuk Melamar</a>
                     @endif
                 </div>
             </div>

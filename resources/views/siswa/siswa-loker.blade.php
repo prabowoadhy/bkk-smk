@@ -20,12 +20,12 @@
                         <div class="row no-gutters pl-2">
                             <div class="col-md-1 d-flex align-items-center justify-content-center">
                             <span class="" style="font-size: 3em; color: Tomato;">
-                                <img class="img img-fluid" src="{{ asset('foto_uploaded/'.$item->foto) }}" style="height: 75px">
+                                <img class="img img-fluid" src="{{ asset('foto_uploaded/'.$item->loker->perusahaan->foto) }}" style="height: 75px">
                             </span>
                             </div>
                             <div class="col-md-9">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $item->posisi.' | '.$item->nama_perusahaan }}</h5>
+                                <h5 class="card-title">{{ $item->loker->posisi.' | '.$item->loker->perusahaan->nama_perusahaan }}</h5>
                                 <p class="card-text">{{ $item->catatan_pelamar }}</p>
                                 <p class="card-text text-danger"><small class="text-muted">Tanggal lamar : {{ $item->created_at }}</small></p>
                             </div>

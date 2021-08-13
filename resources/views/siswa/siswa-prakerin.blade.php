@@ -12,6 +12,7 @@
         <div class="col-md-9">
             <div class="alert alert-secondary" role="alert">Menampilkan Semua Lamaran Prakerin yang telah diajukan.</div>
                     {{-- list job --}}
+                    @foreach ($prakerin as $item)
                     <div class="card" style="max-width: 100%;">
                         <div class="row no-gutters">
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
@@ -21,41 +22,19 @@
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text text-danger"><small class="text-muted">Deadline : </small></p>
+                                <h5 class="card-title">{{ $item->prakerin->posisi }}</h5>
+                                <p class="card-text">{{ $item->catatan_pelamar }}</p>
+                                <p class="card-text text-danger"><small class="text-muted">Tanggal Daftar : {{ $item->created_at }}</small></p>
                             </div>
                             </div>
                             <div class="col-md-2 d-flex align-items-center justify-content-center">
                             <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
+                                <a href="#" class="btn btn-danger">Batalkan</a>
                             </span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card" style="max-width: 100%;">
-                        <div class="row no-gutters">
-                            <div class="col-md-2 d-flex align-items-center justify-content-center">
-                            <span class="" style="font-size: 3em; color: Tomato;">
-                                <i class="fas fa-briefcase fa-2x"></i>
-                            </span>
-                            </div>
-                            <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Job Title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text text-danger"><small class="text-muted">Deadline : </small></p>
-                            </div>
-                            </div>
-                            <div class="col-md-2 d-flex align-items-center justify-content-center">
-                            <span class="">
-                                <a href="#" class="btn btn-danger">Lamar >></a>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                                
+                    @endforeach     
         </div>
         </div>
     </div>

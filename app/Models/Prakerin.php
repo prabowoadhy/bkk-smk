@@ -41,4 +41,9 @@ class Prakerin extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function lamaranprakerin()
+    {
+        return $this->hasMany(LamaranPrakerin::class, 'id_prakerin');
+    }
 }

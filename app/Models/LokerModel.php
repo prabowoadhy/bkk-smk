@@ -32,6 +32,16 @@ class LokerModel extends Model
         return $this->belongsTo(PerusahaanModel::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lamaran()
+    {
+        return $this->hasMany(LamaranModel::class, 'id_pelamar');
+    }
+
     public function allData() {
         $loker = DB::table('loker')
             ->leftJoin('perusahaan', 'loker.perusahaan_id', '=', 'perusahaan.id')

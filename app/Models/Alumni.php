@@ -38,6 +38,11 @@ class Alumni extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function loker()
+    {
+        return $this->hasMany(LamaranModel::class, 'id_pelamar', 'id');
+    }
+
     public function allData() {
         return DB::table('alumni')->orderBy('nama', 'desc')->get();
     }

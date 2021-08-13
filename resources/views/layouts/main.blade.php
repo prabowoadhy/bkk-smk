@@ -29,9 +29,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Lowongan') ? 'active' : '' }}" href="/lowongan">Lowongan</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Prakerin') ? 'active' : '' }}" href="/prakerin">Prakerin</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($title === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($active === 'Lowongan') ? 'active' : '' }}" href="/lowongan">Lowongan</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($active === 'Prakerin') ? 'active' : '' }}" href="/prakerin">Prakerin</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {{ ($active === 'Perusahaan') ? 'active' : '' }}" href="/perusahaan">Perusahaan</a></li>
                     </ul>
                     <span class=" pull-right text-right">
                         @auth('siswa')
@@ -40,9 +40,11 @@
                         @auth('alumni')
                             <a href="{{ Route('logout') }}" class="btn btn-success">Logout</a>
                         @endauth
-                        @guest
-                            <a href="/siswa-loker" class="btn btn-success">Siswa</a>
-                            <a href="/perusahaan-login" class="btn btn-primary">Perusahaan</a>
+                        @guest('siswa')
+                            <a href="/alumni-loker" class="btn btn-primary">Alumni</a>
+                        @endguest
+                        @guest('alumni')
+                            <a href="/siswa-prakerin" class="btn btn-success">Siswa</a>
                         @endguest
                       </span>
                 </div>

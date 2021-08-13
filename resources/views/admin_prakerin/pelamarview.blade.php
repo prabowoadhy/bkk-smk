@@ -32,14 +32,11 @@
         @foreach ($lamaran as $item) 
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $item->nama }}</td>
-                <td>{{ $item->nama_perusahaan }}</td>
-                <td>{{ $item->posisi }}</td>
+                <td>{{ $item->siswa->nama }}</td>
+                <td>{{ $item->prakerin->perusahaan->nama_perusahaan }}</td>
+                <td>{{ $item->prakerin->posisi }}</td>
                 {{-- <td><a class="btn btn-sm btn-primary" href="#">Lihat CV</a></td> --}}
-                <td>
-                    <a class="btn btn-sm btn-success" href="#">{{ $item->no_telp }}</a>
-                    <a class="btn btn-sm btn-danger" href="#">{{ $item->email }}</a>
-                </td>
+                <td><a class="btn btn-sm btn-success" href="/admin/loker/editform/#">{{ $item->siswa->no_telp }}</a><a class="btn btn-sm btn-danger" href="/admin/loker/pelamar/#">{{ $item->siswa->email }}</a></td>
             </tr>
 
         @endforeach

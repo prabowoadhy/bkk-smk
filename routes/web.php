@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminLokerController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\Auth\LoginAuthController;
 |
 */
 Route::post('/postlogin', [LoginAuthController::class, 'postlogin'])->name('postlogin');
+Route::post('/alumnipostlogin', [LoginAuthController::class, 'alumnipostlogin'])->name('alumnipostlogin');
 Route::post('/postloginadmin', [LoginAuthController::class, 'postloginadmin'])->name('postloginadmin');
 Route::get('/siswa/logout', [LoginAuthController::class, 'logout'])->name('logout');
 
@@ -35,17 +37,18 @@ Route::get('/prakerin', [HomeController::class, 'prakerin']);
 Route::get('/siswa-registrasi', [SiswaController::class, 'siswaregistrasi']);
 Route::get('/siswa-login', [SiswaController::class, 'siswalogin'])->name('siswa-login');
 
+Route::get('/alumni-login', [AlumniController::class, 'alumnilogin'])->name('alumni-login');
+
 Route::get('/perusahaan-profil', [PerusahaanController::class, 'index']);
 Route::get('/perusahaan-loker', [PerusahaanController::class, 'perusahaanloker']);
 Route::get('/perusahaan-prakerin', [PerusahaanController::class, 'perusahaanprakerin']);
 Route::get('/perusahaan-registrasi', [PerusahaanController::class, 'perusahaanregistrasi']);
 Route::get('/perusahaan-login', [PerusahaanController::class, 'perusahaanlogin']);
 Route::get('/pelamar-loker', [PerusahaanController::class, 'pelamarloker']);
+Route::get('/admin-login', [AdminController::class, 'login'])->name('admin-login');
 
-
-Route::get('/admin-login', [AdminController::class, 'login']);
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::middleware(['auth:user'])->group(function () {
+Route::middleware(['admin:user'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/prakerin', [AdminPrakerinController::class, 'index']);
     Route::get('/admin/siswa', [AdminSiswaController::class, 'index']);
     Route::get('/admin/siswa/add', [AdminSiswaController::class, 'addsiswa']);
@@ -68,14 +71,29 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/admin/loker/editform/{id}', [AdminLokerController::class, 'editform']);
     Route::post('/admin/loker/editaction/{id}', [AdminLokerController::class, 'editaction']);
     Route::get('/admin/loker/pelamar/{id}', [AdminLokerController::class, 'pelamarloker']);
+    Route::get('/admin/prakerin/addform', [AdminPrakerinController::class, 'addform']);
+    Route::post('/admin/prakerin/addaction', [AdminPrakerinController::class, 'addaction']);
+    Route::get('/admin/prakerin/editform/{id}', [AdminPrakerinController::class, 'editform']);
+    Route::post('/admin/prakerin/editaction/{id}', [AdminPrakerinController::class, 'editaction']);
+    Route::get('/admin/prakerin/pelamar/{id}', [AdminPrakerinController::class, 'pelamarprakerin']);
 });
 
 Route::group(['middleware' => ['auth:siswa,alumni']], function() {
-    Route::get('/lowongan/detail/{id}', [HomeController::class, 'lokerdetail']);
+});
+
+Route::group(['middleware' => ['siswa:siswa']], function() {
     Route::post('/siswalamaraction', [SiswaController::class, 'siswalamaraction']);
-    
-    Route::get('/siswa-profil', [SiswaController::class, 'siswaprofil']);
     Route::post('/siswa/actionupdate/{id_siswa}', [SiswaController::class, 'actionUpdate']);
-    Route::get('/siswa-loker', [SiswaController::class, 'siswaloker']);
+    Route::get('/siswa-profil', [SiswaController::class, 'siswaprofil']);
+    Route::get('/prakerin/detail/{id}', [HomeController::class, 'prakerindetail']);
     Route::get('/siswa-prakerin', [SiswaController::class, 'siswaprakerin']);
+    Route::get('/alumni-loker', [AlumniController::class, 'alumniloker']);
+    
+});
+Route::group(['middleware' => ['alumni:alumni']], function() {
+    Route::get('/lowongan/detail/{id}', [HomeController::class, 'lokerdetail']);
+    Route::get('/alumni-loker', [AlumniController::class, 'alumniloker']);
+    Route::get('/alumni-profil', [AlumniController::class, 'alumniprofil']);
+    Route::post('/alumnilamaraction', [AlumniController::class, 'alumnilamaraction']);
+    
 });

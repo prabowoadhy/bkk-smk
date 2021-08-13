@@ -29,6 +29,11 @@ class PerusahaanModel extends Model
         return $this->hasMany(LokerModel::class, 'perusahaan_id', 'id');
     }
 
+    public function prakerin()
+    {
+        return $this->hasMany(Prakerin::class, 'perusahaan_id', 'id');
+    }
+
     public function allData() {
         $perusahaan = DB::table('perusahaan')
         ->leftJoin('users', 'perusahaan.user_id', '=', 'users.id')

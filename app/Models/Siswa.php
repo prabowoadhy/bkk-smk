@@ -30,6 +30,11 @@ class Siswa extends Authenticatable
 
     protected $guarded = [];
 
+    public function lamaranprakerin()
+    {
+        return $this->hasMany(LamaranPrakerin::class, 'id_pelamar', 'id');
+    }
+
     protected $hidden = [
         'password',
         'remember_token',

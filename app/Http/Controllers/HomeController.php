@@ -33,6 +33,7 @@ class HomeController extends Controller
     {
         $data = [
             'title' => 'Home',
+            'active' => 'Home',
         ];
         return view('homepage/index', $data);
     }
@@ -40,6 +41,7 @@ class HomeController extends Controller
     public function lowongan(Request $request) {
         $data = [
             'title' => 'Lowongan',
+            'active' => 'Lowongan',
             'loker' => $this->LokerModel->allData(),
         ];
         
@@ -49,33 +51,49 @@ class HomeController extends Controller
     public function lokerdetail($id) {
         $data = [
             'title' => 'Lowongan',
+            'active' => 'Lowongan',
             'loker' => $this->LokerModel->detailData($id),
             'user' => $this->userlog(),
         ];
         
-        return view('homepage/siswa-loker-lamar', $data);
+        return view('homepage/alumni-loker-lamar', $data);
     }
 
+    
     public function perusahaan(Request $request) {
         $data = [
             'title' => 'Perusahaan',
+            'active' => 'Perusahaan',
             'perusahaan' => $this->PerusahaanModel->allData(),
         ];
         return view('homepage/perusahaan', $data);
     }
-
+    
     public function detailperusahaan(Request $request) {
         $data = [
-            'title' => 'dPerusahaan'
+            'title' => 'Perusahaan',
+            'active' => 'Perusahaan',
         ];
         return view('homepage/detailperusahaan', $data);
     }
-
+    
     public function prakerin() {
         $data = [
             'title' => 'Prakerin',
+            'active' => 'Prakerin',
             'prakerin' => Prakerin::latest()->filter(request(['search']))->get(),
         ];
         return view('homepage/prakerin', $data);
+    }
+
+    public function prakerindetail($id) {
+        $data = [
+            'title' => 'Praktek Kerja Industri (Magang)',
+            'active' => 'Prakerin',
+            'prakerin' => Prakerin::all()->find($id),
+            'user' => $this->userlog(),
+        ];
+        
+        return view('homepage/siswa-loker-lamar', $data);
     }
 }

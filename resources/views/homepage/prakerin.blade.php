@@ -21,11 +21,11 @@
             <div class="col-md-12 p-2">
 
                 @foreach ($prakerin as $item)
-                <div class="card" style="max-width: 100%;">
+                <div class="card" style="max-width: 100%; margin-top: -1px;">
                     <div class="row no-gutters">
-                        <div class="col-md-2 d-flex align-items-center justify-content-center p-2">
+                        <div class="col-md-2 d-flex align-items-center justify-content-center ">
                             @if (!$item->perusahaan->foto == '')
-                                <img class="img img-fluid" src="{{ asset('foto_uploaded/'.$item->perusahaan->foto) }}" alt="">
+                                <img class="img img-fluid" src="{{ asset('foto_uploaded/'.$item->perusahaan->foto) }}" alt="" style="width: 130px">
                             @else
                             <span class="" style="font-size: 3em; color: Tomato;">
                                 <i class="fas fa-briefcase fa-2x"></i>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-2 d-flex align-items-center justify-content-center">
                         <span class="">
-                            <a href="#" class="btn btn-danger">Lamar >></a>
+                            <a href="/prakerin/detail/{{ $item->id }}" class="btn btn-danger">Lamar >></a>
                         </span>
                         </div>
                     </div>

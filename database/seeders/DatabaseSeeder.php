@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LokerSeeder::class);
         $this->call(LamaranSeeder::class);
         $this->call(PrakerinSeeder::class);
+        $this->call(LamaranPrakerinSeeder::class);
     }
 }
