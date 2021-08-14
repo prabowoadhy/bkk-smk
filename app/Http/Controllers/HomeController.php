@@ -42,7 +42,7 @@ class HomeController extends Controller
         $data = [
             'title' => 'Lowongan',
             'active' => 'Lowongan',
-            'loker' => $this->LokerModel->allData(),
+            'loker' => LokerModel::paginate(10),
         ];
         
         return view('homepage/lowongan', $data);
@@ -83,6 +83,7 @@ class HomeController extends Controller
             'active' => 'Prakerin',
             'prakerin' => Prakerin::latest()->filter(request(['search']))->get(),
         ];
+        // return dd($data);
         return view('homepage/prakerin', $data);
     }
 

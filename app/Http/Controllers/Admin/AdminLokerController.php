@@ -22,7 +22,7 @@ class AdminLokerController extends Controller
         $data = [
             'title' => 'Lowongan Kerja',
             'url' => 'admin/loker',
-            'loker' => $this->LokerModel->allData(),
+            'loker' => LokerModel::all(),
         ];
         return view('admin_loker/lokerview', $data);
     }
@@ -114,5 +114,19 @@ class AdminLokerController extends Controller
         ];
         $this->LokerModel->updateloker($id, $data);
         return redirect('/admin/loker');
+    }
+    public function actiondelete(Request $request)
+    {
+        $id = $request->input('id');
+        $lamaran = LamaranModel::where('id_loker', $id)->exists(); 
+        if ($lamaran) {
+            $message = 'Perusahaan Memiliki Lowongan kerja atau prakerin yang aktif. Harap Dihapus Terlebih Dahulu';
+        } else {
+            $loker = LokerModel::find($id);
+            $loker->delete(); 
+            $message = 'Berhasil dihapus';
+
+        }
+        return redirect('/admin/loker')->with('message', $message);
     }
 }

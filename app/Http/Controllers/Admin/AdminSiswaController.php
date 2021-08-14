@@ -115,4 +115,12 @@ class AdminSiswaController extends Controller
         $this->SiswaModel->updatesiswa($id_siswa, $data);
         return redirect('/admin/siswa')->with('message', 'Data '.Request()->nama.' Berhasil Diubah !');
     }
+    
+    public function actionDelete(Request $request)
+    {
+        $id = $request->input('id_siswa');
+        $siswa = Siswa::find($id);
+        $siswa->delete(); 
+        return redirect('/admin/siswa')->with('message', 'Data '.Request()->nama.' Berhasil Dihapus !');
+    }
 }

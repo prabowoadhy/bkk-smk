@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminPrakerinController;
 use App\Http\Controllers\Admin\AdminPerusahaanController;
 use App\Http\Controllers\Admin\AdminSiswaController;
 use App\Http\Controllers\Admin\AdminAlumniController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Auth\LoginAuthController;
 /*
 |--------------------------------------------------------------------------
@@ -55,27 +56,38 @@ Route::middleware(['admin:user'])->group(function () {
     Route::post('/admin/siswa/actionadd', [AdminSiswaController::class, 'insert']);
     Route::get('/admin/siswa/edit/{id_siswa}', [AdminSiswaController::class, 'editSiswa']);
     Route::post('/admin/siswa/actionupdate/{id_siswa}', [AdminSiswaController::class, 'actionUpdate']);
+    Route::delete('delete-siswa', [AdminSiswaController::class, 'actiondelete']);
     Route::get('/admin/alumni', [AdminAlumniController::class, 'index']);
     Route::get('/admin/alumni/addform', [AdminAlumniController::class, 'addform']);
     Route::post('/admin/alumni/addaction', [AdminAlumniController::class, 'addaction']);
     Route::get('/admin/alumni/editform/{id}', [AdminAlumniController::class, 'editform']);
     Route::post('/admin/alumni/editaction/{id}', [AdminAlumniController::class, 'editaction']);
+    Route::delete('admin/alumni/delete', [AdminAlumniController::class, 'actiondelete']);
     Route::get('/admin/perusahaan', [AdminPerusahaanController::class, 'index']);
     Route::get('/admin/perusahaan/addform', [AdminPerusahaanController::class, 'addform']);
     Route::post('/admin/perusahaan/addaction', [AdminPerusahaanController::class, 'addaction']);
     Route::get('/admin/perusahaan/editform/{id}', [AdminPerusahaanController::class, 'editform']);
     Route::post('/admin/perusahaan/editaction/{id}', [AdminPerusahaanController::class, 'editaction']);
+    Route::delete('/admin/perusahaan/delete', [AdminPerusahaanController::class, 'actiondelete']);
     Route::get('/admin/loker', [AdminLokerController::class, 'index'])->name('admin.loker');
     Route::get('/admin/loker/addform', [AdminLokerController::class, 'addform']);
     Route::post('/admin/loker/addaction', [AdminLokerController::class, 'addaction']);
     Route::get('/admin/loker/editform/{id}', [AdminLokerController::class, 'editform']);
     Route::post('/admin/loker/editaction/{id}', [AdminLokerController::class, 'editaction']);
     Route::get('/admin/loker/pelamar/{id}', [AdminLokerController::class, 'pelamarloker']);
+    Route::delete('/admin/loker/delete', [AdminLokerController::class, 'actiondelete']);
     Route::get('/admin/prakerin/addform', [AdminPrakerinController::class, 'addform']);
     Route::post('/admin/prakerin/addaction', [AdminPrakerinController::class, 'addaction']);
     Route::get('/admin/prakerin/editform/{id}', [AdminPrakerinController::class, 'editform']);
     Route::post('/admin/prakerin/editaction/{id}', [AdminPrakerinController::class, 'editaction']);
     Route::get('/admin/prakerin/pelamar/{id}', [AdminPrakerinController::class, 'pelamarprakerin']);
+    Route::delete('/admin/prakerin/delete', [AdminPrakerinController::class, 'actiondelete']);
+    Route::get('/admin/user', [AdminUserController::class, 'index']);
+    Route::get('/admin/user/addform', [AdminUserController::class, 'addform']);
+    Route::post('/admin/user/addaction', [AdminUserController::class, 'addaction']);
+    Route::get('/admin/user/editform/{id}', [AdminUserController::class, 'editform']);
+    Route::post('/admin/user/editaction/{id}', [AdminUserController::class, 'editaction']);
+    Route::delete('admin/user/delete', [AdminUserController::class, 'actiondelete']);
 });
 
 Route::group(['middleware' => ['auth:siswa,alumni']], function() {

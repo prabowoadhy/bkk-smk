@@ -71,6 +71,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Data Alumni
                             </a>
+                            <a class="nav-link" href="/admin/user">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Data User
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -97,6 +101,11 @@
                           </div>
                             
                         @endif
+                        <div class="row m-1">
+                            @yield('header_content')
+
+                        </div>
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -106,6 +115,7 @@
                                 @yield('content')
                             </div>
                         </div>
+                        @yield('content2')
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -117,6 +127,7 @@
                 </footer>
             </div>
         </div>
+        <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('assets/js/sbadmin-scripts.js') }}"></script>
         @yield('js')

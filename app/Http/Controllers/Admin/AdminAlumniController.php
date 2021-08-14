@@ -116,4 +116,12 @@ class AdminAlumniController extends Controller
         Alumni::updateOrCreate(['id' => $id],$data);
         return redirect('/admin/alumni');
     }
+
+    public function actiondelete(Request $request)
+    {
+        $id = $request->input('id');
+        $siswa = Alumni::find($id);
+        $siswa->delete(); 
+        return redirect('/admin/alumni')->with('message', 'Data '.Request()->nama.' Berhasil Dihapus !');
+    }
 }

@@ -48,11 +48,47 @@
                 </div>
                     
                 @endforeach
+                <div class="row mt-5">
+                    <div class="col-md-12 d-flex justify-content-center">
 
+                        {{ $loker->links() }}
+                    </div>
+                </div>
             </div>
         </div>
         
     </div>
+    <!-- Modal delete -->
+<div class="modal fade" id="authmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Maaf</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p> Silakan Login dulu untuk melamar Kerja / Prakerin </p>
+            <input type="hidden" name="id" id="id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a type="submit" class="btn btn-danger">Hapus</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.authbtn', function () {
+            var id = $(this).val();
+            $('#deletemodal').modal('show');
+            $('#id').val(id);
+        });
+    })
+</script>
 @endsection

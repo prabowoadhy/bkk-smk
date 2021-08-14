@@ -34,6 +34,11 @@ class PerusahaanModel extends Model
         return $this->hasMany(Prakerin::class, 'perusahaan_id', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function allData() {
         $perusahaan = DB::table('perusahaan')
         ->leftJoin('users', 'perusahaan.user_id', '=', 'users.id')

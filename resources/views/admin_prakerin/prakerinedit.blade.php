@@ -9,8 +9,12 @@
                         @csrf
                         <input class="form-control" name="user_id" id="user_id" type="hidden" value="{{ Auth::guard('user')->user()->id ?? '1' }}">
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="jenis_prakerin" id="jenis_prakerin" type="text" placeholder="" value="{{ $prakerin->jenis_prakerin }}">
-                            <label for="nama">Jenis Prakerin</label>
+                            <select id="jenis_prakerin" name="jenis_prakerin" class="form-select" aria-label="Default select example">
+                                @foreach (['Full Time', 'Part Time'] as $p)
+                                <option value="{{ $p }}" @if ($p === $prakerin->jenis_prakerin) selected @endif >{{ $p }}</option>
+                                @endforeach
+                              </select>
+                              <label for="nama">Jenis Prakerin</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" name="posisi" id="posisi" type="text" placeholder="" value="{{ $prakerin->posisi }}">

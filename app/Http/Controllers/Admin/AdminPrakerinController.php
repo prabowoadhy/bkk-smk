@@ -16,6 +16,7 @@ class AdminPrakerinController extends Controller
             'title' => 'Lowongan Prakerin',
             'url' => 'admin/prakerin',
             'prakerin' => Prakerin::all(),
+            // 'btndelete' => LamaranPrakerin::where('prakerin_id', $id)->exists(); 
         ];
         return view('admin_prakerin/prakerinview', $data);
     }
@@ -45,8 +46,9 @@ class AdminPrakerinController extends Controller
     {
         
         $data = [
-            'title' => 'Update Data',
+            'title' => 'Data Pelamar Prakerin',
             'url' => 'admin/pelamar',
+            'loker' => Prakerin::find($id_prakerin),
             'lamaran' => LamaranPrakerin::where('id', $id_prakerin)->orderByDesc('updated_at')->get(),
         ];
         return view('admin_prakerin/pelamarview', $data); 
@@ -106,5 +108,20 @@ class AdminPrakerinController extends Controller
         ];
         Prakerin::updateOrCreate(['id' => $id], $data);
         return redirect('/admin/prakerin');
+    }
+
+    public function actiondelete(Request $request)
+    {
+        $id = $request->input('id');
+        $loker = LamaranPrakerin::where('id_prakerin', $id)->exists(); 
+        if ($loker) {
+            $message = 'Perusahaan Memiliki Lowongan kerja atau prakerin yang aktif. Harap Dihapus Terlebih Dahulu';
+        } else {
+            $prakerin = Prakerin::find($id);
+            $prakerin->delete(); 
+            $message = 'Berhasil dihapus';
+
+        }
+        return redirect('/admin/prakerin')->with('message', $message);
     }
 }

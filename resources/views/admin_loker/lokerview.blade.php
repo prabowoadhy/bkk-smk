@@ -39,19 +39,54 @@
         @foreach ($loker as $item) 
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $item->nama_perusahaan }}</td>
+                <td>{{ $item->perusahaan->nama_perusahaan }}</td>
                 <td>{{ $item->posisi }}</td>
                 <td>{{ $item->bidang }}</td>
                 <td>{{ $item->tgl_selesai }}</td>
                 <td>{{ $item->penempatan }}</td>
                 <td>{{ $item->jenis_loker }}</td>
-                <td><a class="btn btn-sm btn-warning" href="/admin/loker/editform/{{ $item->id }}">Edit</a><a class="btn btn-sm btn-danger" href="/admin/loker/pelamar/{{ $item->id }}">Pelamar</a></td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="/admin/loker/pelamar/{{ $item->id }}">{{ $item->lamaran->count() }} Pelamar</a>
+                    <a class="btn btn-sm btn-warning" href="/admin/loker/editform/{{ $item->id }}">Edit</a>
+                    @if ($item->lamaran->count() > 0)
+                    <button type="button" class="btn btn-sm btn-danger" disabled>
+                        Delete
+                      </button>
+                      @else
+                      <button type="button" value="{{ $item->id }}" id="deletebtn" class="btn btn-sm btn-danger deletebtn">
+                          Delete
+                        </button>
+                    @endif
+                </td>
             </tr>
 
         @endforeach
         
     </tbody>
 </table>
+<!-- Modal delete -->
+<div class="modal fade" id="deletemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/loker/delete" method="post">
+            @csrf
+            @method('DELETE')
+            <p>Pastikan tidak ada pelamar aktif di lowongan ini. Yakin ingin Menghapus ?</p>
+            <input type="hidden" name="id" id="id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('js')
@@ -66,5 +101,14 @@
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
+</script>
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.deletebtn', function () {
+            var id = $(this).val();
+            $('#deletemodal').modal('show');
+            $('#id').val(id);
+        });
+    })
 </script>
 @endsection

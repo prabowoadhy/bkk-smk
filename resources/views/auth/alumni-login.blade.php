@@ -16,7 +16,7 @@
 
             <!-- Registeration Form -->
             <div class="col-md-7 col-lg-6 ml-auto">
-                <h4 class="text-primary mb-4">Login Siswa / Alumni</h4>
+                <h4 class="text-primary mb-4">Login Alumni</h4>
                 <form action="{{ route('alumnipostlogin') }}" method="post">
                     @csrf
                     <div class="row">

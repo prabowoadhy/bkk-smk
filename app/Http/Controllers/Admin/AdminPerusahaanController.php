@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\LamaranModel;
+use App\Models\LokerModel;
 use Illuminate\Http\Request;
 use App\Models\PerusahaanModel;
+use App\Models\Prakerin;
 use Illuminate\Support\Str;
 
 class AdminPerusahaanController extends Controller
@@ -19,7 +22,7 @@ class AdminPerusahaanController extends Controller
         $data = [
             'title' => 'Data Perusahaan',
             'url' => 'admin/perusahaan',
-            'perusahaan' => $this->PerusahaanModel->allData(),
+            'perusahaan' => PerusahaanModel::all(),
         ];
         return view('admin_perusahaan/perusahaanview', $data);
     }
@@ -49,7 +52,7 @@ class AdminPerusahaanController extends Controller
     public function addaction()
     {
         Request()->validate([
-            'nama_perusahaan' => 'required',
+            'nama_perusahaan' => 'required|unique:perusahaan,nama_perusahaan',
             'alamat' => 'required',
             'bidang_jasa' => 'required',
             'deskripsi' => 'required',
@@ -114,5 +117,20 @@ class AdminPerusahaanController extends Controller
         } 
         PerusahaanModel::updateOrCreate(['id' => $id],$data);
         return redirect('/admin/perusahaan');
+    }
+
+    public function actiondelete(Request $request)
+    {
+        $id = $request->input('id');
+        $loker = LokerModel::where('perusahaan_id', $id)->exists(); 
+        if ($loker) {
+            $message = 'Perusahaan Memiliki Lowongan kerja dan prakerin yang aktif. Harap Dihapus Terlebih Dahulu';
+        } else {
+            $perusahaan = PerusahaanModel::find($id);
+            $perusahaan->delete(); 
+            $message = 'Berhasil dihapus';
+
+        }
+        return redirect('/admin/perusahaan')->with('message', $message);
     }
 }
