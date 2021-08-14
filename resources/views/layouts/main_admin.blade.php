@@ -101,9 +101,8 @@
                           </div>
                             
                         @endif
-                        <div class="row m-1">
+                        <div class="row">
                             @yield('header_content')
-
                         </div>
 
                         <div class="card mb-4">

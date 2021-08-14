@@ -1,7 +1,6 @@
 @extends('layouts/main_admin')
 
-@section('content')
-<div class="row">
+@section('header_content')
     <div class="col-xl-3 col-md-6">
         <div class="card bg-primary text-white mb-4">
             <div class="card-body"><h2>{{ $loker->count() + $prakerin->count() }} Lowongan</h2></div>
@@ -38,73 +37,67 @@
             </div>
         </div>
     </div>
-</div>
+    
 @endsection
-@section('content2')
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table me-1"></i>
-        Semua Lowongan
-    </div>
-    <div class="card-body">
-    <table id="datatablesSimple">
-        <thead>
+
+@section('content')
+<table id="datatablesSimple">
+    <thead>
+        <tr>
+            <th class="text-center">No</th>
+            <th class="text-center">Jenis Lowongan</th>
+            <th class="text-center">Posisi</th>
+            <th class="text-center">Bidang</th>
+            <th class="text-center" data-type="date" data-format="YYYY-MM-DD">Tgl Selesai</th>
+            <th class="text-center">Penempatan</th>
+            <th class="text-center">Perusahaan</th>
+            <th class="text-center">Total Pelamar</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>No</th>
+            <th>Jenis Lowongan</th>
+            <th>Posisi</th>
+            <th>Bidang</th>
+            <th>Tgl Selesai</th>
+            <th>Penempatan</th>
+            <th>Perusahaan</th>
+            <th>Total Pelamar</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($prakerin as $item)
             <tr>
-                <th>No</th>
-                <th>Jenis Lowongan</th>
-                <th>Posisi</th>
-                <th>Bidang</th>
-                <th>Tgl Mulai</th>
-                <th>Tgl Selesai</th>
-                <th>Penempatan</th>
-                <th>Perusahaan</th>
+                <td class="text-center">{{ $no++ }}</td>
+                <td>Prakerin</td>
+                <td>{{ $item->posisi }}</td>
+                <td>{{ $item->bidang }}</td>
+                <td>{{ $item->tgl_selesai }}</td>
+                <td>{{ $item->penempatan }}</td>
+                <td>{{ $item->perusahaan->nama_perusahaan }}</td>
+                <td class="text-center"><span class="badge bg-secondary">{{ $item->lamaranprakerin->count() }}</span></td>
             </tr>
-        </thead>
-        <tfoot>
+        @endforeach
+        @foreach ($loker as $item)
             <tr>
-                <th>No</th>
-                <th>Jenis Lowongan</th>
-                <th>Posisi</th>
-                <th>Bidang</th>
-                <th>Tgl Mulai</th>
-                <th>Tgl Selesai</th>
-                <th>Penempatan</th>
-                <th>Perusahaan</th>
+                <td class="text-center">{{ $no++ }}</td>
+                <td>Pekerjaan</td>
+                <td>{{ $item->posisi }}</td>
+                <td>{{ $item->bidang }}</td>
+                <td>{{ $item->tgl_selesai }}</td>
+                <td>{{ $item->penempatan }}</td>
+                <td>{{ $item->perusahaan->nama_perusahaan }}</td>
+                <td class="text-center"><span class="badge bg-secondary">{{ $item->lamaran->count() }}</span></td>
             </tr>
-        </tfoot>
-        <tbody>
-            @php
-                $no = 1;
-            @endphp
-            @foreach ($prakerin as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>Prakerin</td>
-                    <td>{{ $item->posisi }}</td>
-                    <td>{{ $item->bidang }}</td>
-                    <td>{{ $item->tgl_mulai }}</td>
-                    <td>{{ $item->tgl_selesai }}</td>
-                    <td>{{ $item->penempatan }}</td>
-                    <td>{{ $item->perusahaan->nama_perusahaan }}</td>
-                </tr>
-            @endforeach
-            @foreach ($loker as $item)
-                <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>Kerja</td>
-                    <td>{{ $item->posisi }}</td>
-                    <td>{{ $item->bidang }}</td>
-                    <td>{{ $item->tgl_mulai }}</td>
-                    <td>{{ $item->tgl_selesai }}</td>
-                    <td>{{ $item->penempatan }}</td>
-                    <td>{{ $item->perusahaan->nama_perusahaan }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    </div>
-</div>
+        @endforeach
+    </tbody>
+</table>
 @endsection
+
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script>
@@ -112,7 +105,7 @@
     // Simple-DataTables
     // https://github.com/fiduswriter/Simple-DataTables/wiki
 
-    const datatablesSimple = document.getElementById('datatablesSimple');
+    const datatablesSimple = document.getElementById('datatablesSimple', );
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }

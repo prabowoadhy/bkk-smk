@@ -46,7 +46,7 @@
                 <td>{{ $item->penempatan }}</td>
                 <td>{{ $item->perusahaan->nama_perusahaan }}</td>
                 <td>
-                    <a class="btn btn-sm btn-success" href="/admin/prakerin/pelamar/{{ $item->id }}">{{ $item->lamaranprakerin->count() }} Pelamar</a>
+                    <a class="btn btn-sm btn-info" href="/admin/prakerin/pelamar/{{ $item->id }}">Pelamar <span class="badge bg-secondary">{{ $item->lamaranprakerin->count() }}</span></a>
                     <a class="btn btn-sm btn-warning" href="/admin/prakerin/editform/{{ $item->id }}">Edit</a>
                     @php
                         $delbtn = '';

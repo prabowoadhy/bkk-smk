@@ -46,7 +46,7 @@
                 <td>{{ $item->penempatan }}</td>
                 <td>{{ $item->jenis_loker }}</td>
                 <td>
-                    <a class="btn btn-sm btn-success" href="/admin/loker/pelamar/{{ $item->id }}">{{ $item->lamaran->count() }} Pelamar</a>
+                    <a class="btn btn-sm btn-info" href="/admin/loker/pelamar/{{ $item->id }}">Pelamar <span class="badge bg-secondary">{{ $item->lamaran->count() }}</span></a>
                     <a class="btn btn-sm btn-warning" href="/admin/loker/editform/{{ $item->id }}">Edit</a>
                     @if ($item->lamaran->count() > 0)
                     <button type="button" class="btn btn-sm btn-danger" disabled>
